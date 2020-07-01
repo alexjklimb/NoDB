@@ -1,0 +1,10 @@
+const express = require('express');
+const app = express();
+app.use(express.json());
+const messagesBaseUrl = "/api/runs";
+const mc = require("./Controllers/runctrl");
+app.post(messagesBaseUrl, mc.create);
+app.get(messagesBaseUrl, mc.read);
+app.put(`${messagesBaseUrl}/:id`, mc.update);
+app.delete(`${messagesBaseUrl}/:id`, mc.delete);
+app.listen(4444, ()=> console.log('server is running on 4444'));
